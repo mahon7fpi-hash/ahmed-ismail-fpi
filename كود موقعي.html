@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="الموقع الشخصي ومعرض أعمالي ومهاراتي.">
+  <title>اسمك هنا | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: rgba(19, 30, 52, .78);
+      --surface-solid: #131e34;
+      --text: #f8fafc;
+      --muted: #a7b4c8;
+      --primary: #38bdf8;
+      --secondary: #818cf8;
+      --border: rgba(148, 163, 184, .16);
+      --shadow: 0 20px 55px rgba(0, 0, 0, .22);
+    }
+
+    body.light {
+      --bg: #f4f7fb;
+      --surface: rgba(255, 255, 255, .86);
+      --surface-solid: #fff;
+      --text: #132039;
+      --muted: #58677d;
+      --primary: #0284c7;
+      --secondary: #6366f1;
+      --border: rgba(51, 65, 85, .13);
+      --shadow: 0 18px 45px rgba(30, 64, 120, .09);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      font-family: "Cairo", sans-serif;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(56,189,248,.10), transparent 28rem),
+        radial-gradient(circle at 88% 38%, rgba(129,140,248,.10), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      transition: background .3s, color .3s;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .container { width: min(1100px, 90%); margin: auto; }
+
+    /* شريط التنقل */
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+    .navbar {
+      min-height: 76px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .logo {
+      font-size: 1.35rem; font-weight: 900; text-decoration: none;
+      color: var(--text); white-space: nowrap;
+    }
+    .logo span { color: var(--primary); }
+    .nav-links { display: flex; align-items: center; gap: 25px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-weight: 700;
+      font-size: .92rem; transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 12px;
+      border: 1px solid var(--border); background: var(--surface-solid);
+      color: var(--text); cursor: pointer; transition: .2s;
+    }
+    .icon-btn:hover { color: var(--primary); transform: translateY(-2px); }
+    .menu-btn { display: none; }
+
+    /* الأزرار */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 23px; border-radius: 12px; text-decoration: none;
+      font-weight: 800; border: 1px solid transparent; transition: .25s;
+    }
+    .btn-primary {
+      color: #07111f;
+      background: linear-gradient(135deg, var(--primary), #7dd3fc);
+      box-shadow: 0 10px 28px rgba(56,189,248,.18);
+    }
+    .btn-outline { border-color: var(--border); color: var(--text); background: var(--surface); }
+    .btn:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+    /* القسم الرئيسي */
+    .hero {
+      min-height: 670px; display: grid; place-items: center;
+      padding: 90px 0 75px; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-content { max-width: 800px; position: relative; z-index: 1; }
+    .avatar {
+      width: 118px; height: 118px; margin: 0 auto 24px;
+      display: grid; place-items: center; border-radius: 35px;
+      font-size: 2.5rem; font-weight: 900; color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 18px 50px rgba(56,189,248,.25);
+      transform: rotate(-5deg);
+    }
+    .eyebrow {
+      display: inline-block; padding: 6px 15px; margin-bottom: 18px;
+      border: 1px solid var(--border); border-radius: 50px;
+      color: var(--primary); background: var(--surface); font-weight: 700;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 4.2rem); line-height: 1.3; font-weight: 900; }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { max-width: 650px; margin: 20px auto 28px; color: var(--muted); font-size: 1.08rem; }
+    .hero-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .social-links { display: flex; justify-content: center; gap: 17px; margin-top: 30px; }
+    .social-links a {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border: 1px solid var(--border); border-radius: 13px;
+      color: var(--muted); background: var(--surface); text-decoration: none; transition: .2s;
+    }
+    .social-links a:hover { color: var(--primary); transform: translateY(-4px); border-color: var(--primary); }
+
+    /* الأقسام والبطاقات */
+    section { padding: 82px 0; }
+    .section-heading { text-align: center; margin-bottom: 42px; }
+    .section-heading small { color: var(--primary); font-weight: 800; }
+    .section-heading h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-top: 5px; }
+    .section-heading p { color: var(--muted); margin-top: 8px; }
+    .about-box, .card, .contact-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; box-shadow: var(--shadow);
+    }
+    .about-box { padding: 32px; color: var(--muted); text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat( auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .card { padding: 25px; transition: transform .25s, border-color .25s; }
+    .card:hover { transform: translateY(-7px); border-color: rgba(56,189,248,.55); }
+    .card-icon {
+      width: 50px; height: 50px; display: grid; place-items: center;
+      border-radius: 15px; color: var(--primary); background: rgba(56,189,248,.12);
+      font-size: 1.3rem; margin-bottom: 16px;
+    }
+    .card h3 { margin-bottom: 7px; font-size: 1.12rem; }
+    .card p { color: var(--muted); font-size: .94rem; }
+
+    /* المهارات */
+    .skill { margin-bottom: 19px; }
+    .skill-top { display: flex; justify-content: space-between; margin-bottom: 7px; font-weight: 700; }
+    .skill-top span:last-child { color: var(--primary); }
+    .progress { height: 9px; border-radius: 30px; background: var(--border); overflow: hidden; }
+    .progress span {
+      display: block; height: 100%; width: 0; border-radius: inherit;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 1.2s ease;
+    }
+
+    /* المشاريع */
+    .project-card { overflow: hidden; padding: 0; }
+    .project-cover {
+      min-height: 145px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(56,189,248,.22), rgba(129,140,248,.25));
+      color: var(--primary); font-size: 3rem;
+    }
+    .project-info { padding: 23px; }
+    .project-info p { margin: 8px 0 15px; }
+    .project-link { color: var(--primary); text-decoration: none; font-weight: 800; }
+
+    /* التواصل */
+    .contact-box { padding: 35px; text-align: center; }
+    .contact-box p { color: var(--muted); margin: 8px auto 22px; }
+    footer { padding: 25px 0; border-top: 1px solid var(--border); color: var(--muted); text-align: center; }
+    #toTop {
+      position: fixed; bottom: 22px; left: 22px; z-index: 500;
+      opacity: 0; pointer-events: none; transform: translateY(10px);
+      transition: .25s;
+    }
+    #toTop.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+    /* ظهور العناصر أثناء التمرير */
+    .reveal { opacity: 0; transform: translateY(25px); transition: opacity .7s, transform .7s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 800px) {
+      .menu-btn { display: inline-grid; place-items: center; }
+      .nav-links {
+        position: absolute; top: 76px; right: 5%; left: 5%;
+        display: none; flex-direction: column; align-items: stretch; gap: 0;
+        padding: 10px; border: 1px solid var(--border); border-radius: 16px;
+        background: var(--surface-solid); box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 11px 14px; }
+      .hero { min-height: 590px; }
+    }
+    @media (max-width: 480px) {
+      .container { width: 92%; }
+      .hero { padding-top: 65px; }
+      section { padding: 62px 0; }
+      .about-box, .contact-box { padding: 23px; }
+      .btn { width: 100%; }
+      .hero-buttons { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container navbar">
+      <a class="logo" href="#home">My<span>Portfolio.</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">الرئيسية</a></li>
+        <li><a href="#about">من أنا</a></li>
+        <li><a href="#skills">مهاراتي</a></li>
+        <li><a href="#projects">أعمالي</a></li>
+        <li><a href="#contact">تواصل معي</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeBtn" aria-label="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="فتح القائمة"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero" id="home">
+      <div class="container hero-content reveal">
+        <div class="avatar">م</div>
+        <div class="eyebrow"><i class="fa-solid fa-circle-check"></i> مرحباً بك في موقعي الشخصي</div>
+        <h1>أنا <span class="gradient-text">اسمك هنا</span><br>مطور ويب وصانع أفكار</h1>
+        <p>أهتم بتصميم وتطوير مواقع ويب عصرية وسريعة وسهلة الاستخدام. أعمل باستمرار على تطوير مهاراتي وتحويل الأفكار إلى تجارب رقمية مميزة.</p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects">شاهد أعمالي <i class="fa-solid fa-arrow-left"></i></a>
+          <a class="btn btn-outline" href="#contact">تواصل معي <i class="fa-regular fa-paper-plane"></i></a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:your@email.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="container reveal">
+        <div class="section-heading">
+          <small>تعرف عليّ</small>
+          <h2>من أنا؟</h2>
+          <p>نبذة بسيطة عني وعن شغفي بالتكنولوجيا</p>
+        </div>
+        <div class="about-box">
+          أنا [اكتب اسمك]، مهتم بمجال البرمجة وتطوير الويب. أحب تعلم التقنيات الجديدة
+          وبناء مشاريع تساعد على حل المشكلات وتقديم تجربة استخدام رائعة.
+          يمكنك تعديل هذه الفقرة وكتابة نبذة حقيقية عنك وعن دراستك وأهدافك.
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container reveal">
+        <div class="section-heading">
+          <small>ما الذي أتقنه؟</small>
+          <h2>مهاراتي</h2>
+          <p>بعض التقنيات التي أتعلمها وأستخدمها</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon"><i class="fa-brands fa-html5"></i></div>
+            <h3>HTML</h3><p>بناء هيكل صفحات ويب منظم وسهل الوصول.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-brands fa-css3-alt"></i></div>
+            <h3>CSS</h3><p>تصميم واجهات جذابة ومتجاوبة مع مختلف الشاشات.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-brands fa-js"></i></div>
+            <h3>JavaScript</h3><p>إضافة التفاعل والوظائف الديناميكية للمواقع.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-brands fa-python"></i></div>
+            <h3>Python</h3><p>كتابة البرامج وحل المشكلات باستخدام البرمجة.</p>
+          </article>
+        </div>
+
+        <div style="max-width:700px;margin:35px auto 0">
+          <div class="skill">
+            <div class="skill-top"><span>HTML</span><span>85%</span></div>
+            <div class="progress"><span data-width="85%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>CSS</span><span>75%</span></div>
+            <div class="progress"><span data-width="75%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>JavaScript</span><span>60%</span></div>
+            <div class="progress"><span data-width="60%"></span></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>Python</span><span>65%</span></div>
+            <div class="progress"><span data-width="65%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container reveal">
+        <div class="section-heading">
+          <small>أحدث أعمالي</small>
+          <h2>مشاريعي</h2>
+          <p>أضف هنا مشاريعك الحقيقية وروابطها</p>
+        </div>
+        <div class="grid">
+          <article class="card project-card">
+            <div class="project-cover"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="project-info">
+              <h3>موقع شخصي</h3>
+              <p>موقع تعريفي يعرض معلوماتي ومهاراتي وأعمالي.</p>
+              <a class="project-link" href="#" target="_blank">عرض المشروع <i class="fa-solid fa-arrow-up-left-from-circle"></i></a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-cover"><i class="fa-solid fa-calculator"></i></div>
+            <div class="project-info">
+              <h3>مشروع حاسبة</h3>
+              <p>تطبيق بسيط لإجراء العمليات الحسابية باستخدام JavaScript.</p>
+              <a class="project-link" href="#" target="_blank">عرض المشروع <i class="fa-solid fa-arrow-up-left-from-circle"></i></a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <div class="project-cover"><i class="fa-solid fa-code"></i></div>
+            <div class="project-info">
+              <h3>مشروع جديد</h3>
+              <p>اكتب وصفاً مختصراً لمشروع آخر قمت بتنفيذه.</p>
+              <a class="project-link" href="#" target="_blank">عرض المشروع <i class="fa-solid fa-arrow-up-left-from-circle"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container reveal">
+        <div class="contact-box">
+          <div class="section-heading" style="margin-bottom:12px">
+            <small>لنتحدث معاً</small>
+            <h2>هل لديك مشروع أو فكرة؟</h2>
+          </div>
+          <p>يسعدني التواصل معك ومناقشة الأفكار والفرص الجديدة.</p>
+          <a class="btn btn-primary" href="mailto:your@email.com"><i class="fa-regular fa-envelope"></i> أرسل لي رسالة</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> جميع الحقوق محفوظة — اسمك هنا</p>
+    </div>
+  </footer>
+
+  <button class="icon-btn" id="toTop" aria-label="العودة للأعلى"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // تغيير الوضع وحفظ اختيار المستخدم
+    const themeBtn = document.getElementById("themeBtn");
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme === "light") document.body.classList.add("light");
+    updateThemeIcon();
+
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      localStorage.setItem(
+        "portfolio-theme",
+        document.body.classList.contains("light") ? "light" : "dark"
+      );
+      updateThemeIcon();
+    });
+
+    function updateThemeIcon() {
+      themeBtn.innerHTML = document.body.classList.contains("light")
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    // قائمة الهاتف
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+      menuBtn.innerHTML = navLinks.classList.contains("open")
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+
+    // إظهار العناصر عند الوصول إليها بالتمرير
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal, .card").forEach(el => {
+      el.classList.add("reveal");
+      revealObserver.observe(el);
+    });
+
+    // تحريك أشرطة المهارات عند ظهورها
+    const skillObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.width;
+          skillObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll(".progress span").forEach(bar => skillObserver.observe(bar));
+
+    // زر العودة للأعلى
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.classList.toggle("show", window.scrollY > 400);
+
+      // تمييز رابط القسم الحالي
+      let current = "home";
+      document.querySelectorAll("main section, .hero").forEach(section => {
+        if (window.scrollY >= section.offsetTop - 150) current = section.id;
+      });
+      document.querySelectorAll(".nav-links a").forEach(link => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+      });
+    });
+    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // السنة تتحدث تلقائياً
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

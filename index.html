@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي الشخصي | My Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0f172a;
+            color: white;
+            transition: 0.3s;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: #111c32;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 19px;
+            max-width: 600px;
+            line-height: 2;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #0284c7;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 70px 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #38bdf8;
+        }
+
+        .skills, .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: #263750;
+        }
+
+        .card h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .contact a {
+            display: inline-block;
+            margin: 10px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        footer {
+            background: #111c32;
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+        }
+
+        #themeBtn {
+            border: none;
+            background: #38bdf8;
+            padding: 8px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        body.light {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        body.light header,
+        body.light footer {
+            background: #dbeafe;
+        }
+
+        body.light nav a {
+            color: #0f172a;
+        }
+
+        body.light .card {
+            background: white;
+        }
+
+        body.light .card p,
+        body.light .hero p {
+            color: #475569;
+        }
+
+        @media(max-width: 700px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">My Portfolio</div>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من أنا</a>
+        <a href="#skills">مهاراتي</a>
+        <a href="#projects">أعمالي</a>
+        <a href="#contact">تواصل معي</a>
+    </nav>
+
+    <button id="themeBtn" onclick="changeTheme()">🌙</button>
+</header>
+
+<div class="hero" id="home">
+    <h1>مرحباً، أنا <span>اسمك هنا</span></h1>
+
+    <p>
+        أنا مطور ومصمم مهتم بعالم التكنولوجيا والبرمجة،
+        وأسعى دائماً لتطوير مهاراتي وإنشاء مشاريع إبداعية.
+    </p>
+
+    <a href="#about" class="btn">اكتشف المزيد</a>
+</div>
+
+<section id="about">
+    <h2>من أنا؟</h2>
+
+    <p>
+        اكتب هنا نبذة عن نفسك، دراستك، اهتماماتك،
+        أهدافك وما تطمح إلى تحقيقه في المستقبل.
+    </p>
+</section>
+
+<section id="skills">
+    <h2>مهاراتي</h2>
+
+    <div class="skills">
+
+        <div class="card">
+            <h3>HTML</h3>
+            <p>تصميم وبناء صفحات الويب.</p>
+        </div>
+
+        <div class="card">
+            <h3>CSS</h3>
+            <p>تنسيق وتصميم المواقع باحترافية.</p>
+        </div>
+
+        <div class="card">
+            <h3>JavaScript</h3>
+            <p>إضافة التفاعلات والحركة للمواقع.</p>
+        </div>
+
+        <div class="card">
+            <h3>Python</h3>
+            <p>البرمجة وتطوير التطبيقات.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="projects">
+    <h2>مشاريعي</h2>
+
+    <div class="projects">
+
+        <div class="card">
+            <h3>المشروع الأول</h3>
+            <p>اكتب وصفاً لمشروعك الأول هنا.</p>
+        </div>
+
+        <div class="card">
+            <h3>المشروع الثاني</h3>
+            <p>اكتب وصفاً لمشروعك الثاني هنا.</p>
+        </div>
+
+        <div class="card">
+            <h3>المشروع الثالث</h3>
+            <p>اكتب وصفاً لمشروعك الثالث هنا.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2>تواصل معي</h2>
+
+    <a href="https://github.com/">GitHub</a>
+
+    <a href="https://www.linkedin.com/">LinkedIn</a>
+
+    <a href="mailto:your@email.com">Email</a>
+</section>
+
+<footer>
+    <p>© 2026 جميع الحقوق محفوظة - اسمك هنا</p>
+</footer>
+
+<script>
+    function changeTheme() {
+        document.body.classList.toggle("light");
+
+        const button = document.getElementById("themeBtn");
+
+        button.innerHTML =
+            document.body.classList.contains("light") ? "☀️" : "🌙";
+    }
+</script>
+
+</body>
+</html>
